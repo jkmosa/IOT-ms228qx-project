@@ -1,6 +1,4 @@
-# IOT-ms228qx-project
-humidity sensor
-# IOT project report 
+# humidity sensor report 
 
 Mussie Assefa (ms228qx)
 
