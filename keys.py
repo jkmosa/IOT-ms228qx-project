@@ -1,0 +1,2 @@
+WIFI_SSID = 'NETGEAR'
+WIFI_PASS = None

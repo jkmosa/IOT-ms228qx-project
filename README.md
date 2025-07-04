@@ -1,4 +1,4 @@
-# humidity sensor report 
+# Humidity sensor report 
 
 Mussie Assefa (ms228qx)
 
