@@ -142,7 +142,7 @@ Automation and triggers in this project are handled via MQTT subscriptions to sp
 
 ## Finalizing the design
 
-![image](images/final-result.jpg)
+![image](images/final-result.png)
 
 Overall, the project went successfully. The integration of the DHT11 sensor, RGB LEDs, piezo buzzer, and relay module worked as expected, and real-time data transmission to Adafruit IO using MQTT over Wi-Fi allowed for effective remote monitoring and control. Using Thonny IDE made the development process smooth, especially for MicroPython beginners.
 
