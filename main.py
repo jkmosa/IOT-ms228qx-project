@@ -9,7 +9,7 @@ import RGB
 from dht import DHT11
 
 # Generate a unique MQTT client ID using random bytes
-random_num = int.from_bytes(os.urandom(3), "little")
+random_num = int.from_bytes(os.urandom(3), "little")  # changing the pseduo number to Integer.
 mqtt_client_id = bytes("client_"+str(random_num), "utf-8")
 
 # Adafruit IO server and credentials
