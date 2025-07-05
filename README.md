@@ -1,10 +1,10 @@
-# Humidity sensor report 
+# Humidity sensor and control report 
 
 Mussie Assefa (ms228qx)
 
 ## Introduction 
 
-A humidity sensor continuously monitors the surrounding air and detects abnormal humidity levels. When high or low humidity is detected, the system responds by triggering a buzzer (audible alert) and flashing an LED (visual alert). This allows individuals especially sinusitis patients to take timely action, such as turning on a dehumidifier or opening a window, helping to alleviate their symptoms and prevent further discomfort.
+A humidity sensor continuously monitors the surrounding air and detects abnormal humidity levels. When high or low humidity is detected, the system responds by triggering a buzzer (audible alert) and flashing an LED (visual alert). This allows individuals especially sinusitis patients to take timely action, such as turning on a built-in fan in the sensor or a dehumidifier or opening a window, helping to alleviate their symptoms and prevent further discomfort.
 
 This project can be realistically completed within a week, provided the components (sensors, GPIO, and SPI communication protocols) are understood at a basic level.
 
@@ -21,31 +21,31 @@ I bought all this bellow items (not including dht11 sensor) and other included s
 >List of material used:
 - **Raspberry pi pico w** :- is a microcontroler which sets an instruction to sensor out to GPIO 14 for the active piezo buzzer, GPIO 10 and 15 to Blue light and red light respectively and GPIO 27 to dht11 sensor powering it using pin 3v3 (3 volts).
 
-![Screenshot 2025-07-03 130448](https://hackmd.io/_uploads/H1wcLk4Sgl.png)
+![image](images/Screenshot-2025-07-03-130448.png)
 
 - **Jumper wire** :- they are wires used to connect sensors to microcontroler through a breadboared.
 
-![Screenshot 2025-07-03 130804](https://hackmd.io/_uploads/SyJ5_1Nrgg.png)
+![image](images/Screenshot-2025-07-03-130804.png)
 
 
 - **Bread boared** :- is a media of interface which is used for a simplification of wire connection and clean look for the design.
 
-![Screenshot 2025-07-03 130417](https://hackmd.io/_uploads/HJjI1eErxx.png)
+![image](images/Screenshot-2025-07-03-130417.png)
 
 
 - **Dht11 sensor** :- The sensor measures humidity and temperature every 3 seconds via the instruction of the microcontroler using Micropython.
 
-![Screenshot 2025-07-03 135427](https://hackmd.io/_uploads/HkRFkl4Bge.png)
+![image](images/Screenshot-2025-07-03-135427.png)
 
 
 - **LED light** :- Thier are two anode light Blue and Red where Red is incorporated with disconnected network signal and blue gives a warning singal when the humidity pass the maximum threshold or it's below the minimum threshold in sensors surrounding. 
 
-![Screenshot 2025-07-03 125516](https://hackmd.io/_uploads/S1lnygNSxe.png)
+![image](images/Screenshot-2025-07-03-125516.png)
 
 
 - **Active piezo buzzer** :- sound is activated when the humidity pass the maximum threshold or it's below the minimum threshold in sensors surrounding.
 
-![Screenshot 2025-07-03 123740](https://hackmd.io/_uploads/BJ-1glEBle.png)
+![image](images/Screenshot-2025-07-03-123740.png)
 
 ## Computer setup
 
@@ -58,10 +58,38 @@ The MicroPython interpreter was selected in Thonny by navigating to Tools → Op
 The code was uploaded to GitHub for version control and sharing. Alternatively, platforms like HackMD can be used for collaborative documentation.
 
 
-## putting everything togeather
+## Putting everything togeather
 
+Resistors were not used in the system because power is shared among the three LEDs, and the buzzer on the other side the relay module, and the DHT11 sensor. This shared power distribution ensures that each component receives sufficient voltage and current within safe limits, minimizing the risk of electrical overload or deficiency.
 
-## plateform 
+![image](images/circut-board.png)
+
+> Power & Current Considerations:
+The Raspberry Pi Pico W can safely supply up to ~50 mA per GPIO, and a total of ~300 mA max across all pins.
+
+LEDs and buzzer should be current-limited via resistors in this case since GPIO was emmiting less power i decided to remove the resistors (usually 220–330Ω for LEDs).
+
+The DHT11 draws little current (~2.5 mA).
+
+Relay modules may require more current (~60–100 mA), especially if you're switching an actual load. Power it from VBUS (5V) or an external power source if needed.
+
+1. DHT11 Sensor
+VCC → 3.3V
+GND → GND
+DATA → GP27
+
+2. RGB LEDs (common cathode or anode)
+Connect each color pin Red = GP15, Blue = GP10 and Green = 10 to Common cathode → GND.
+
+3. Piezo Buzzer (Active) + Pin → GPIO GP14 and – Pin → GND
+Active buzzers don’t need PWM; they turn on/off with digital HIGH/LOW.
+
+4. Relay Module to control fan
+IN → GPIO GP16
+VCC → 5V
+GND → GND
+
+## Plateform 
 
 I used Adafruit a cloud service which is Saas where the core functionality of Adafruit is Data Storage Storing incoming data from sensors/devices like:-
 - Temperature
@@ -85,7 +113,7 @@ This bi-directional control made it ideal for projects like humidity sensor. Sca
 
 ## The code
 
-![Screenshot 2025-07-03 212331](https://hackmd.io/_uploads/BJmkFU4Hex.png)
+![image](images/core-function.png)
 
 The tempSensor is an instance of the DHT11 class, connected to GPIO pin 27. It collects environmental data using the measure() function, which retrieves both temperature and humidity readings from the sensor.
 
@@ -97,6 +125,9 @@ The tempSensor is an instance of the DHT11 class, connected to GPIO pin 27. It c
 
 Regardless of the alert status, the program publishes humidity and temperature data every 5 seconds to Adafruit IO using the MQTT protocol over a Wi-Fi connection.
 
+![image](images/umqtt.png)
+Don't forget to install umqtt using package manager in thonny if umqtt is not working.
+
 ## Transmitting the data / connectivity
 
 The project uses **Wi-Fi** as the wireless protocol and **MQTT** as the transport protocol. Wi-Fi is built into the Raspberry Pi Pico W, making it a convenient and reliable choice for connecting the device to the internet without requiring additional hardware, offering good range for indoor environments but with moderate power consumption. It offers stable, high-speed connectivity suitable for real-time data transmission. For transport, MQTT (Message Queuing Telemetry Transport) is used due to its lightweight nature, low bandwidth usage, reducing data size and battery usage, and efficient publish/subscribe model. This makes it ideal for IoT applications like this one, where sensor data (temperature and humidity) needs to be sent periodically to a cloud server (Adafruit IO) over a Wi-Fi connection.
@@ -107,4 +138,17 @@ In this project, data is sent to Adafruit IO every 5 seconds using the client.pu
 
 Automation and triggers in this project are handled via MQTT subscriptions to specific topics. When the device receives messages like "ON" or "OFF" on the buzzer or light MQTT feeds, callback functions activate or deactivate the buzzer and LEDs accordingly. Additionally, the device itself triggers alerts automatically based on sensor readings—if humidity falls below 30% or rises above 50%, it turns on the buzzer and LED for a short period. This combination of sensor-driven triggers and remote MQTT commands enables both automatic responses and user-controlled actions.
 
+![image](images/adafruit-dashboard.png)
+
 ## Finalizing the design
+
+![image](images/final-result.jpg)
+
+Overall, the project went successfully. The integration of the DHT11 sensor, RGB LEDs, piezo buzzer, and relay module worked as expected, and real-time data transmission to Adafruit IO using MQTT over Wi-Fi allowed for effective remote monitoring and control. Using Thonny IDE made the development process smooth, especially for MicroPython beginners.
+
+> If I were to improve the project, I would:
+
+- Add resistors for each LED to ensure long-term hardware safety.
+- Include a web dashboard or mobile app for more interactive control beyond Adafruit IO’s default interface.
+- Add a local display, like an I2C LCD or OLED screen, for immediate on-device feedback.
+- Consider using more precise sensors, such as the DHT22 higher accuracy.
