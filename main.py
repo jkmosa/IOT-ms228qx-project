@@ -73,8 +73,8 @@ def connect():
         print(wlan.isconnected())
         print("waiting for connection...")
 
-    print("connected")
-    print(wlan.ifconfig())
+    print("connected to wifi.")
+    # print(wlan.ifconfig())
 
 
 connect()
