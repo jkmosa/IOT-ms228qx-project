@@ -152,3 +152,5 @@ Overall, the project went successfully. The integration of the DHT11 sensor, RGB
 - Include a web dashboard or mobile app for more interactive control beyond Adafruit IO’s default interface.
 - Add a local display, like an I2C LCD or OLED screen, for immediate on-device feedback.
 - Consider using more precise sensors, such as the DHT22 higher accuracy.
+
+You can find video demonstration of the project here: **[humidity sensor control.](https://youtu.be/wlDH5_blb8Q)**

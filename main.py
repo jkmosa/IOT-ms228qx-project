@@ -15,7 +15,7 @@ mqtt_client_id = bytes("client_"+str(random_num), "utf-8")
 # Adafruit IO server and credentials
 ADAFRUIT_TO_URL = "io.adafruit.com"
 ADAFRUIT_USERNAME = "jk_mosa"  # same username as my IG (if curious)
-ADAFRUIT_TO_KEY = None
+ADAFRUIT_TO_KEY = None  # replace with your adafruit API key
 
 # Define MQTT feed topics
 mqtt_humidity = "jk_mosa/feeds/humidity"
@@ -65,7 +65,7 @@ def connect():
     # WiFi Connection
     wlan = network.WLAN(network.STA_IF)  # Put modem on Station mode
     wlan.active(True)
-    wlan.connect(keys.WIFI_SSID, keys.WIFI_PASS)
+    wlan.connect(keys.WIFI_SSID, keys.WIFI_PASS)  # pass SSID and PASSCODE as an argument.
 
     while not wlan.isconnected():
         sleep(3)
