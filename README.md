@@ -49,7 +49,7 @@ I bought all this bellow items (not including dht11 sensor) and other included s
 
 ## Computer setup
 
-The device was programmed using **[Thonny IDE](https://thonny.org/)**, which is beginner-friendly and comes with built-in support for MicroPython—no extra packages required. Its clean interface avoids the complexity of IDEs like VS Code, making it ideal for new users.
+The device was programmed using **[Thonny IDE](https://thonny.org/)**, which is beginner-friendly and comes with built-in support for MicroPython—no extra packages required. Its clean interface avoids the complexity of IDEs like VS Code, making it ideal for new users. NOTE you need to intall **[python](https://www.python.org/)**. the community verion is more than enough.
 
 The MicroPython firmware was flashed onto the Raspberry Pi Pico using a **[.uf2 file](https://micropython.org/download/RPI_PICO_W/)** file downloaded from the official MicroPython website. This file format, developed by Microsoft's MakeCode team, makes it easy to drag and drop firmware onto the device.
 
