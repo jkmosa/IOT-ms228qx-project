@@ -1,6 +1,6 @@
 # Humidity sensor and control report 
 
-Mussie Assefa (ms228qx)
+Student name: Mussie Assefa (ms228qx)
 
 ## Introduction 
 
