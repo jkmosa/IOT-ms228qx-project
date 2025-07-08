@@ -1,6 +1,6 @@
 # Humidity sensor and control report 
 
-Student name: Mussie Assefa (ms228qx)
+Author name: Mussie Assefa (ms228qx)
 
 ## Introduction 
 
@@ -91,7 +91,7 @@ GND → GND
 
 ## Plateform 
 
-I used Adafruit a cloud service which is Saas where the core functionality of Adafruit is Data Storage Storing incoming data from sensors/devices like:-
+I used **[Adafruit](https://www.adafruit.com/)** a cloud service which is Saas where the core functionality of Adafruit is Data Storage Storing incoming data from sensors/devices like:-
 - Temperature
 - Humidity
 - Button presses for light and buzzer
