@@ -16,7 +16,7 @@ Additionally, the collected data can be used for statistical analysis, contribut
 
 ## Material 
 
-I bought all this bellow items (not including dht11 sensor) and other included spares from ***Freenova*** an electronic kit package vendor which costed around SEK 350. The dht11 sensor was bought from ***Electrokit*** which costed around SEK 50.
+I bought all this bellow items (not including dht11 sensor) and other included spares from ***Freenova*** an electronic kit package vendor which costed around SEK 350. The dht11 sensor, fan and battery was bought from ***Electrokit*** which costed around SEK 50, 90 and 40 respectively. 
 
 >List of material used:
 - **Raspberry pi pico w** :- is a microcontroler which sets an instruction to sensor out to GPIO 14 for the active piezo buzzer, GPIO 10 and 15 to Blue light and red light respectively and GPIO 27 to dht11 sensor powering it using pin 3v3 (3 volts).
