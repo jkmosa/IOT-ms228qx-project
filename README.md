@@ -27,25 +27,33 @@ I bought all this bellow items (not including dht11 sensor) and other included s
 
 ![image](images/Screenshot-2025-07-03-130804.png)
 
-
 - **Bread boared** :- is a media of interface which is used for a simplification of wire connection and clean look for the design.
 
 ![image](images/Screenshot-2025-07-03-130417.png)
-
 
 - **Dht11 sensor** :- The sensor measures humidity and temperature every 3 seconds via the instruction of the microcontroler using Micropython.
 
 ![image](images/Screenshot-2025-07-03-135427.png)
 
-
 - **LED light** :- Thier are two anode light Blue and Red where Red is incorporated with disconnected network signal and blue gives a warning singal when the humidity pass the maximum threshold or it's below the minimum threshold in sensors surrounding. 
 
 ![image](images/Screenshot-2025-07-03-125516.png)
 
-
 - **Active piezo buzzer** :- sound is activated when the humidity pass the maximum threshold or it's below the minimum threshold in sensors surrounding.
 
 ![image](images/Screenshot-2025-07-03-123740.png)
+
+- **fan** :- It helps circulate air or remove moisture, thereby reducing the humidity.
+
+![image](images/fan.png)
+
+- **battery** :- The battery should have enough current capacity to drive components like a relay or fan, which can consume more power.
+
+![image](images/battery.png)
+
+- **relay module** :- A relay module is an interface that uses a small signal (from your Pico) to open or close a circuit for a device powered by a separate, higher voltage (like 5V, 9V, or 12V).
+
+![image](images/relay-module.png)
 
 ## Computer setup
 
